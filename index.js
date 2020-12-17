@@ -149,6 +149,17 @@ class Instructor extends Lambdasian {
   grade(student, subject) {
     return `${student.name} receives a perfect score on ${subject}`;
   }
+  points(student) {
+    const numberSign = Math.random() < 0.5 ? -1 : 1;
+    const pointsChange = Number((numberSign*Math.random()*100).toFixed(2));
+    if (student.grade + pointsChange > 100) {
+      student.grade = 100;
+    } else if (student.grade + pointsChange < 0) {
+      student.grade = 0;
+    } else {
+      student.grade = student.grade + pointsChange;
+    }
+  }
 }
   /*
     TASK 5
@@ -182,8 +193,11 @@ class Student extends Lambdasian {
   sprintChallenge(subject) {
     return `${this.name} has begun sprint challenge on ${subject}`;
   }
+  graduate() {
+    return this.grade >= 70 ? `Graduate!` : `Keep trying!`;
+  }
 }
-  
+
   /*
     TASK 6
       - Write a ProjectManager class extending Instructor.
@@ -219,6 +233,31 @@ class ProjectManager extends Instructor {
         + If the student's grade is above a 70% let them graduate! Otherwise go back to grading their assignments to increase their score.
   */
 
+  // Testing the stretch additions:
+  const joshObj = {
+    name: 'Josh',
+    age: 30,
+    location: 'Bay',
+    specialty: 'CSS',
+    favLanguage: 'Python',
+    catchPhrase: 'Hi!'
+  }
+  const josh = new Instructor(joshObj);
+  console.log(josh);
+  
+  const laulObj = {
+    name: 'Laul',
+    age: 31,
+    location: 'Bay',
+    previousBackground: 'CSS',
+    className: 'web38',
+    favSubjects: 'Python'
+  }
+  const laul = new Student(laulObj);
+  console.log(laul);
+  josh.points(laul);
+  console.log(laul);
+  console.log(laul.graduate());
 
   //End of Challenge
   /* 🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑 */
