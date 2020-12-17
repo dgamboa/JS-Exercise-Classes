@@ -247,7 +247,7 @@ class ProjectManager extends Instructor {
   
   const laulObj = {
     name: 'Laul',
-    age: 31,
+    age: 25,
     location: 'Bay',
     previousBackground: 'CSS',
     className: 'web38',
