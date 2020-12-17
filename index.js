@@ -171,6 +171,7 @@ class Student extends Lambdasian {
     this.previousBackground = attrs.previousBackground;
     this.className = attrs.className;
     this.favSubjects = attrs.favSubjects;
+    this.grade = Number((Math.random()*100).toFixed(2));
   }
   listSubjects() {
     return `Loving ${this.favSubjects.join(', ')}!`;
